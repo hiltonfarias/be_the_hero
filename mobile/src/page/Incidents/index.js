@@ -7,7 +7,6 @@ import api from '../../services/api';
 import logoImg from '../../assets/logo.png';
 
 import styles from './styles';
-import { useEffect } from 'react';
 
 export default function Incidents() {
     const [incidents, setIncidents] = useState([]);
