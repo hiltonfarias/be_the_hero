@@ -12,10 +12,10 @@ export default function Detail() {
     const navigation = useNavigation();
     const route = useRoute();
     const incident = route.params.incident;
-    const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no caso "${incident.title}" com o valor de ${Intl.NumberFormat('pt-BR', {style: 'currency', currency:'BRL'}).format(incident.value)}.`
+    const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no caso "${incident.title}" com o valor de ${Intl.NumberFormat('pt-BR', {style: 'currency', currency:'BRL'}).format(incident.value)}.`;
 
     function navigateBack() {
-        navigation.goBack()
+        navigation.goBack();
     }
 
     function sendMail() {
@@ -23,11 +23,11 @@ export default function Detail() {
             subject: `Herói do caso: ${incident.title}`,
             recipients: [incident.email],
             body: message,
-        })
+        });
     }
 
     function sendWhatsapp() {
-        Linking.openURL(`whatsapp://send?phone=${incident.whatsapp}&text=${message}`)
+        Linking.openURL(`whatsapp://send?phone=${incident.whatsapp}&text=${message}`);
     }
 
     return (
@@ -75,4 +75,4 @@ export default function Detail() {
             </View>
         </View>
     );
-}
+};
