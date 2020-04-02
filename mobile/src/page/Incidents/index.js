@@ -16,7 +16,7 @@ export default function Incidents() {
     const navigation = useNavigation();
 
     function navigateToDetail(incident) {
-        navigation.navigate('Detail', incident);
+        navigation.navigate('Detail', { incident });
     }
 
     async function loadIncidents() {
@@ -31,11 +31,13 @@ export default function Incidents() {
         
         setLoading(true);
 
-        const response = await api.get('incidents', {params: {page}});
+        const response = await api.get('incidents', {
+            params: { page }
+        });
 
         setIncidents([... incidents, ...response.data]);
         setTotal(response.headers['x-total-count']);
-        setPage(page+1);
+        setPage(page + 1);
         setLoading(false);
     }
 
@@ -78,7 +80,7 @@ export default function Incidents() {
                                 Intl.NumberFormat('pt-BR', {
                                 style: 'currency', currency:'BRL'
                                 }).format(incident.value)
-                            }
+                            };
                         </Text>
 
                         <TouchableOpacity 
